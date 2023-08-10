@@ -66,7 +66,7 @@ uint8_t data[10] = {0};
 								U6_SendData(84);
 								nCount = 0;
 							}
-							//send_Data();
+							send_Data();
 						}
 						else {
 							PID_UpdateSetVel(&MOTOR1,0);
