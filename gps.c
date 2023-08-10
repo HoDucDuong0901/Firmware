@@ -2,6 +2,72 @@
 #include "UART.h"
 #include <math.h>
 GPS	GPS_M8P;
+char    Message[MESSAGE_ROW][MESSAGE_COL];
+double GetValueFromString(char *value)
+{
+	double p1 = 0,p2 = 0, h = 1, result;
+	int row = 0, col = 0, index = 0, len1, len2, sign = 1;
+	char TempBuffer[2][30] = {0};
+	for(int i = 0; i < 2; i++)
+	{
+		for(int j = 0; j < 30; j++)
+		{
+			TempBuffer[i][j] = 0;
+		}
+	}
+	if(value[0] == '-') 
+	{
+		index++;
+		sign = -1;
+	}
+	else if(value[0] == ' ')
+	{
+		index++;
+		sign = 1;
+	}
+	while(value[index] != 0)
+	{
+		if(value[index] != '.')
+		{
+			TempBuffer[row][col] = value[index];
+			col++;
+		}
+		else
+		{
+			row++;
+			len1 = col;
+			col = 0;
+		}
+		index++;
+	}
+	if(row == 0)
+	{
+		len1 = col;
+		for(int i = len1 - 1; i >= 0; i--)
+		{
+			p1 += ((uint8_t)TempBuffer[0][i] - 48) * h;
+			h *= 10;
+		}
+		p2 = 0;
+	}
+	else
+	{
+		for(int i = len1 - 1; i >= 0; i--)
+		{
+			p1 += ((uint8_t)TempBuffer[0][i] - 48) * h;
+			h *= 10;
+		}
+		len2 = col;
+		h = 0.1;
+		for(int i = 0; i < len2; i++)
+		{
+			p2 += ((uint8_t)TempBuffer[1][i] - 48) * h;
+			h *= 0.1;
+		}
+	}
+	result = sign*(p1 + p2);
+	return result;
+}
 double GPS_DMS_To_DD(double LL)
 {
     double dd, mm;
@@ -134,14 +200,25 @@ eGPS_status   GPS_NMEA_Message(GPS *pgps, uint8_t *inputmessage,char result[MESS
 		if(inputmessage[nMessageIndex] == (uint8_t)'$'){
 				if( (GPS_StringCompare(&inputmessage[nMessageIndex + 1],"GNGGA")) == Check_OK){
 						GetMessageInfo((char *)&inputmessage[nMessageIndex], result, ',');
-						GPS_M8P.dLatitude = GPS_StringToLat(&result[2][0]); 
-						GPS_M8P.dLongtitude = GPS_StringToLng(&result[4][0]); 
-						GPS_LatLonToUTM(&GPS_M8P);
-						return GPS_DataValid;
-				}
-				else{
+						if((pgps->GPS_quality = (enum_GPS_Quality) GetValueFromString(&result[6][0])) != 0 ){
+							pgps->dLatitude = GPS_StringToLat(&result[2][0]); 
+							pgps->dLongtitude = GPS_StringToLng(&result[4][0]); 
+							GPS_LatLonToUTM(pgps);
+							return GPS_DataValid;
+						}
+						else{
 						return GPS_UnValid;
+						}
 				}
 		}
+		++nMessageIndex;
  }
+	return GPS_UnValid;
+}
+void 					GPS_ParametersInit(GPS* pgps){
+	pgps->Goal_Flag = Check_NOK;
+	pgps->refPointIndex = -1;
+	pgps->dKgain = 0.7;
+	pgps->dKsoft = 0.001;
+	pgps->dStep = 0.5;
 }

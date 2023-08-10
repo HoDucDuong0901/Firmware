@@ -33,6 +33,23 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 
+// For USART1's interrution
+void USART1_IRQHandler(void);
+void DMA2_Stream5_IRQHandler(void); // USART1 RX - IMU to MCU
+void DMA2_Stream7_IRQHandler(void); // USART1 TX - IMU to MCU
+
+// For USART2's interruption
+void USART2_IRQHandler(void);
+void DMA1_Stream5_IRQHandler(void); // USART2 RX - GPS to MCU
+void DMA1_Stream6_IRQHandler(void); // USART2 TX - GPS to MCU
+
+// For USART6's interruption
+void USART6_IRQHandler(void); 
+void DMA2_Stream2_IRQHandler(void); // USART6 RX - Lora PC to Lora MCU
+void DMA2_Stream6_IRQHandler(void); // USART6 TX - Lora PC to Lora MCU
+
+// For TIM2's interruption
+void TIM2_IRQHandler(void);
 #ifdef __cplusplus
 }
 #endif

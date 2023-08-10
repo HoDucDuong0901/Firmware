@@ -35,9 +35,11 @@
 .\objects\main.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h
 .\objects\main.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\main.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
-.\objects\main.o: system_timetick.h
-.\objects\main.o: motor.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: UART.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: encoder.h
+.\objects\main.o: motor.h
+.\objects\main.o: gps.h
+.\objects\main.o: functions.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

@@ -100,7 +100,7 @@ void InTimer_Config(void){
 	TIM_TimeBaseInitTypeDef TIM2_InitStructure;
 	TIM2_InitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM2_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM2_InitStructure.TIM_Period = 840000;
+	TIM2_InitStructure.TIM_Period = 4200000;
 	TIM2_InitStructure.TIM_Prescaler = 0;
 	TIM2_InitStructure.TIM_RepetitionCounter = 0;
 	TIM_TimeBaseInit(TIM2,&TIM2_InitStructure);

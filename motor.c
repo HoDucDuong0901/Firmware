@@ -1,7 +1,8 @@
 #include "motor.h"
 #include "encoder.h"
-Status robot_status = {false, false};
-Time sTime = {0.01};
+VehicleStt 		robot_status;
+Time 					Timer; 
+Vehicle	        Veh;
 void	PID_Compute(DC_MOTOR *motor, Time* pTime){
 	motor->dError = motor->dCurrent_set_v - motor->dCurrent_v; // RPM
 	double dP = 0.0f,dI = 0.0f,dD = 0.0f;
@@ -102,4 +103,16 @@ void RobotRun(double DutyM1,double DutyM2){
 double filter(double alpha, double x, double pre_x)
 {
 	return (1 - alpha)*x + alpha*pre_x;
+}
+void Reset_Motor()
+{
+	PID_UpdateSetVel(&MOTOR1, 0);
+	PID_UpdateSetVel(&MOTOR2, 0);
+	PID_ResetPID(&MOTOR1);
+	PID_ResetPID(&MOTOR2);
+	Veh.Manual_Velocity = 0.0;
+	Veh.Auto_Velocity =   0.0;
+	Veh.Max_Velocity =    0.0;
+	robot_status.Veh_Auto_Flag = Check_NOK;
+	robot_status.Veh_VelAvoidFlag = Check_NOK;
 }

@@ -37,3 +37,4 @@
 .\objects\uart.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\uart.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
 .\objects\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

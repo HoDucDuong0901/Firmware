@@ -37,4 +37,5 @@
 .\objects\motor.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\motor.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
 .\objects\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\motor.o: gps.h
 .\objects\motor.o: encoder.h

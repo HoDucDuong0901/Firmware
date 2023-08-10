@@ -1,6 +1,7 @@
 .\objects\gps.o: gps.c
 .\objects\gps.o: gps.h
 .\objects\gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\gps.o: UART.h
 .\objects\gps.o: stm32f4xx.h
 .\objects\gps.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\core_cm4.h
@@ -37,5 +38,5 @@
 .\objects\gps.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h
 .\objects\gps.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\gps.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
-.\objects\gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

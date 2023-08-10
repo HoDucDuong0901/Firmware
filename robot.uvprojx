@@ -392,19 +392,9 @@
               <FilePath>.\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>system_timetick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\system_timetick.c</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>UART.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\UART.c</FilePath>
             </File>
             <File>
               <FileName>motor.c</FileName>
@@ -417,19 +407,24 @@
               <FilePath>.\encoder.c</FilePath>
             </File>
             <File>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UART.c</FilePath>
+            </File>
+            <File>
               <FileName>functions.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\functions.c</FilePath>
             </File>
             <File>
-              <FileName>imu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\imu.c</FilePath>
-            </File>
-            <File>
               <FileName>gps.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\gps.c</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\interrupt.c</FilePath>
             </File>
           </Files>
         </Group>
