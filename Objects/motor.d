@@ -10,7 +10,7 @@
 .\objects\motor.o: system_stm32f4xx.h
 .\objects\motor.o: stm32f4xx_conf.h
 .\objects\motor.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h
-.\objects\motor.o: ..\Thesis\stm32f4xx.h
+.\objects\motor.o: ..\Firmware\stm32f4xx.h
 .\objects\motor.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h
 .\objects\motor.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h
 .\objects\motor.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h

@@ -15,7 +15,7 @@
 .\objects\functions.o: system_stm32f4xx.h
 .\objects\functions.o: stm32f4xx_conf.h
 .\objects\functions.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h
-.\objects\functions.o: ..\Thesis\stm32f4xx.h
+.\objects\functions.o: ..\Firmware\stm32f4xx.h
 .\objects\functions.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h
 .\objects\functions.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h
 .\objects\functions.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h

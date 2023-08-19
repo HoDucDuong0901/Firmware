@@ -10,7 +10,7 @@
 .\objects\encoder.o: system_stm32f4xx.h
 .\objects\encoder.o: stm32f4xx_conf.h
 .\objects\encoder.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h
-.\objects\encoder.o: ..\Thesis\stm32f4xx.h
+.\objects\encoder.o: ..\Firmware\stm32f4xx.h
 .\objects\encoder.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h
 .\objects\encoder.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h
 .\objects\encoder.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h

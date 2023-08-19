@@ -12,7 +12,7 @@
 .\objects\gps.o: system_stm32f4xx.h
 .\objects\gps.o: stm32f4xx_conf.h
 .\objects\gps.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h
-.\objects\gps.o: ..\Thesis\stm32f4xx.h
+.\objects\gps.o: ..\Firmware\stm32f4xx.h
 .\objects\gps.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h
 .\objects\gps.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h
 .\objects\gps.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h
