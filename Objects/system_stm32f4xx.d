@@ -9,7 +9,7 @@
 .\objects\system_stm32f4xx.o: system_stm32f4xx.h
 .\objects\system_stm32f4xx.o: stm32f4xx_conf.h
 .\objects\system_stm32f4xx.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h
-.\objects\system_stm32f4xx.o: ..\Thesis\stm32f4xx.h
+.\objects\system_stm32f4xx.o: ..\Firmware\stm32f4xx.h
 .\objects\system_stm32f4xx.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h
 .\objects\system_stm32f4xx.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h
 .\objects\system_stm32f4xx.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h

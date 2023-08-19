@@ -10,7 +10,7 @@
 .\objects\interrupt.o: system_stm32f4xx.h
 .\objects\interrupt.o: stm32f4xx_conf.h
 .\objects\interrupt.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h
-.\objects\interrupt.o: ..\Thesis\stm32f4xx.h
+.\objects\interrupt.o: ..\Firmware\stm32f4xx.h
 .\objects\interrupt.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h
 .\objects\interrupt.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h
 .\objects\interrupt.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h
