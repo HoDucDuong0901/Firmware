@@ -40,59 +40,41 @@ uint8_t data[10] = {0};
 		Reset_Motor();
 		Init_Parameters();
 		while(1){
+			/*-- Velocity control part --*/
+//			if (robot_status.Veh_Auto_Flag == Check_OK){
+//				  PID_UpdateSetVel(&MOTOR1,70);
+//					PID_UpdateSetVel(&MOTOR2,70);
+//			}
+			/*-- Fuzzy angle contorl part  --*/
 			if (robot_status.Veh_SampleState == Check_OK){
 					if (robot_status.Veh_Auto_Flag == Check_OK){
-						if (GPS_M8P.GPS_quality == Mode_2D_3D){
-							GPS_StanleyCompute();
-							int a = 10;
-							nCount++;
-							if (nCount > 10){
-								int nIndex = 0;
-								ConvertCorToByte(GPS_M8P.dCurrentPosX,GPS_M8P.dCurrentPosY,
-																bEast,bNorth);
-								ConvertYawToByte(GPS_M8P.dheadingAngle,bYaw);
-								memset(U6_TxBuffer,0,84);
-								U6_TxBuffer[83] = 0x03;
-								U6_TxBuffer[82] = 0x06;
-								U6_TxBuffer[0]  = 0x02;
-								nIndex += 1;
-								memcpy(U6_TxBuffer + nIndex, bVMOV,sizeof(bVMOV));
-								nIndex += sizeof(bVMOV);
-								memcpy(U6_TxBuffer + nIndex , bEast,sizeof(bEast));
-								nIndex += sizeof(bEast);
-								memcpy(U6_TxBuffer + nIndex, bNorth, sizeof(bNorth));
-								nIndex += sizeof(bNorth);
-								memcpy(U6_TxBuffer + nIndex, bYaw, sizeof(bYaw));
-								U6_SendData(84);
-								nCount = 0;
+							Fuzzy.dSet_Angle = 60 + Fuzzy.dAngle; // [-180, 180]
+							IMU_UpdateFuzzyInput(&Fuzzy);
+							Fuzzy.dFuzzy_Out = Defuzzification_Max_Min(Fuzzy.dFuzzy_Error, Fuzzy.dFuzzy_Error_dot);
+							if(Fuzzy.dFuzzy_Out >= 0)
+							{
+							PID_UpdateSetVel(&MOTOR1, (1 - fabs(Fuzzy.dFuzzy_Out)) * Veh.Auto_Velocity);
+							PID_UpdateSetVel(&MOTOR2, (1 + fabs(Fuzzy.dFuzzy_Out)) * Veh.Auto_Velocity);
 							}
-							send_Data();
-						}
-						else {
-							PID_UpdateSetVel(&MOTOR1,0);
-							PID_UpdateSetVel(&MOTOR2,0);
-						}
-						GPS_M8P.NewDataAvailable = 0;
-				}
-				else{
-					PID_UpdateSetVel(&MOTOR1,0);
-					PID_UpdateSetVel(&MOTOR2,0);
+							else
+							{
+							PID_UpdateSetVel(&MOTOR1, (1 + fabs(Fuzzy.dFuzzy_Out)) * Veh.Auto_Velocity);
+							PID_UpdateSetVel(&MOTOR2, (1 - fabs(Fuzzy.dFuzzy_Out)) * Veh.Auto_Velocity);
+							}
+					}
+					robot_status.Veh_SampleState = Check_NOK;
 			}
+			
+			if(robot_status.Vel_Status == Check_OK)
+						{
+						EncoderRead(&MOTOR1, M1_TIMx, &Timer);
+						EncoderRead(&MOTOR2, M2_TIMx, &Timer);
+						PID_Compute(&MOTOR1, &Timer);
+						PID_Compute(&MOTOR2, &Timer);
+						RobotRun(MOTOR1.dOut, MOTOR2.dOut);
+						robot_status.Vel_Status = Check_NOK;
+						}
 		}
-		/*-----------------------------------------------------------------*/
-		/*--------------------- Velocity Control section ------------------*/
-		/*-----------------------------------------------------------------*/
-		if(robot_status.Vel_Status == Check_OK)
-		{
-			EncoderRead(&MOTOR1, M1_TIMx, &Timer);
-			EncoderRead(&MOTOR2, M2_TIMx, &Timer);
-			PID_Compute(&MOTOR1, &Timer);
-			PID_Compute(&MOTOR2, &Timer);
-			RobotRun(MOTOR1.dOut, MOTOR2.dOut);
-			robot_status.Vel_Status = Check_NOK;
-		}
-			robot_status.Veh_SampleState = Check_NOK;
-	}
 }
 int append_string_to_buffer(uint8_t *buf, const char *str)
 {
